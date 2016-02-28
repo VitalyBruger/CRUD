@@ -1,0 +1,29 @@
+        <div >
+            
+            <form method="post" action="/users/edit/<%=data.id%>">
+                <table cellpadding="11">
+                <tr>
+                    <td >First Name</td><td>: <input type="text" name="firstname" value="<%=data.firstName%>" required></td>
+                 </tr>
+                 <tr>
+                     <td  valign="top">Last Name</td><td valign="top">:  <input type="text" name="lastname" value="<%=data.lastName%>" required></td>
+                </tr>
+                <tr>
+                   <td >Age</td><td>: <input type="text" name="age" value="<%=data.age%>" required></td>
+                 </tr>
+                  
+                 <tr>
+                    <td ></td>
+                    <td>
+                        &nbsp; <input type="submit" name="submit" value="Save">
+                       <input type="button" name="cancel" value="Cancel" class="cancel" 
+                       onClick="window.location.href='/users'">
+                    </td>
+                 </tr>
+                </table>
+            </form>
+            
+        </div>
+        
+
+
