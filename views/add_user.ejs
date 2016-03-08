@@ -1,27 +1,47 @@
-        <div>
+<div>
             
-            <form method="post" action="/users/add">
-                <table cellpadding="11">
-                <tr>
-                    <td >First Name</td><td>: <input type="text" name="firstname" required></td>
-                 </tr>
-                 <tr>
-                    <td  valign="top">Last Name</td><td valign="top">:  <input type="text" name="lastname" required></td>
-                </tr>
-                <tr>
-                    <td >Age</td><td>: <input type="text" name="age" required></td>
-                 </tr>
-                 <tr>
-                    <td ></td>
-                    <td>
-                        &nbsp; <input type="submit" name="submit" value="Save">
-                       <input type="button" name="cancel" value="Cancel"  
-                       onClick="window.location.href='../users'">
-                    </td>
-                 </tr>
-                </table>
-            </form>
-            
-        </div>
+ <script>
+ function addSend(){
+
+    var xhr = new XMLHttpRequest();
+
+    var body = 'firstname=' + document.getElementById("firstname").value+
+        '&lastname=' + document.getElementById("lastname").value+
+        '&age=' + document.getElementById("age").value;
+    console.log(body);
+    xhr.open("POST", '/users/add', true)
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')
+
+    xhr.onreadystatechange = function() {
+        if (this.readyState != 4) return;
+        //document.write(this.responseText);
+        window.location.href='/users';
+    }
+
+   xhr.send(body); 
+   
+}
+</script>
+
+
+    <table cellpadding="11">
+    <tr>
+        <td >First Name</td><td>: <input type="text" id="firstname" required></td>
+    </tr>
+    <tr>
+        <td  valign="top">Last Name</td><td valign="top">:  <input type="text" id="lastname" required></td>
+    </tr>
+    <tr>
+        <td >Age</td><td>: <input type="text" id="age" required></td>
+    </tr>
+    <tr>
+        <td ></td>
+        <td>
+        &nbsp; <input type="button" name="submit" value="Save" onClick="addSend();">
+               <input type="button" name="cancel" value="Cancel" onClick="window.location.href='../users'">
+        </td>
+    </tr>
+    </table>
+</div>
         
 

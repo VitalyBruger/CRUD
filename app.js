@@ -42,7 +42,7 @@ app.post('/users/add', function (req, res) {
 });    
       
 
-app.get('/users/delete/:id', function (req, res) {
+app.delete('/users/delete/:id', function (req, res) {
   var id = req.params.id;
   db.read ( function(data) {
     var tblUsers = data;
@@ -64,7 +64,7 @@ app.get('/users/edit/:id', function (req, res) {
 });
 
 
-app.post('/users/edit/:id',function (req, res) {  
+app.put('/users/edit/:id',function (req, res) {  
   var id = req.params.id;
   db.read ( function(data) {
     var tblUsers = data;

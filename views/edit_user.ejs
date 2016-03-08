@@ -1,27 +1,50 @@
+<script>
+ function editSend(){
+
+    var xhr = new XMLHttpRequest();
+
+    var body = 'firstname=' + document.getElementById("firstname").value+
+        '&lastname=' + document.getElementById("lastname").value+
+        '&age=' + document.getElementById("age").value;
+    console.log(body);
+    xhr.open("PUT", '/users/edit/<%=data.id%>', true)
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')
+
+    xhr.onreadystatechange = function() {
+        if (this.readyState != 4) return;
+        //document.write(this.responseText);
+        window.location.href='/users';
+    }
+
+   xhr.send(body); 
+   
+}
+</script>
+
         <div >
             
-            <form method="post" action="/users/edit/<%=data.id%>">
+            
                 <table cellpadding="11">
                 <tr>
-                    <td >First Name</td><td>: <input type="text" name="firstname" value="<%=data.firstName%>" required></td>
+                    <td >First Name</td><td>: <input type="text" id="firstname" value="<%=data.firstName%>" required></td>
                  </tr>
                  <tr>
-                     <td  valign="top">Last Name</td><td valign="top">:  <input type="text" name="lastname" value="<%=data.lastName%>" required></td>
+                     <td  valign="top">Last Name</td><td valign="top">:  <input type="text" id="lastname" value="<%=data.lastName%>" required></td>
                 </tr>
                 <tr>
-                   <td >Age</td><td>: <input type="text" name="age" value="<%=data.age%>" required></td>
+                   <td >Age</td><td>: <input type="text" id="age" value="<%=data.age%>" required></td>
                  </tr>
                   
                  <tr>
                     <td ></td>
                     <td>
-                        &nbsp; <input type="submit" name="submit" value="Save">
+                        &nbsp; <input type="button" name="submit" value="Save" onClick="editSend();">
                        <input type="button" name="cancel" value="Cancel" class="cancel" 
                        onClick="window.location.href='/users'">
                     </td>
                  </tr>
                 </table>
-            </form>
+            
             
         </div>
         

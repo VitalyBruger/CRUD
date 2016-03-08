@@ -1,3 +1,22 @@
+<script>
+ function deleteSend(id){
+    console.log("delete");
+    var xhr = new XMLHttpRequest();
+
+   
+    xhr.open("DELETE", '/users/delete/'+id, true)
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')
+
+    xhr.onreadystatechange = function() {
+        if (this.readyState != 4) return;
+        //document.write(this.responseText);
+        window.location.href='/users';
+    }
+
+   xhr.send(); 
+   
+}
+</script>
      <div>
          <div>
            <button onClick="window.location.href='../users/add'">+ Add</button>
@@ -23,10 +42,8 @@
                     <td><%=data[i].age%></td>
                     
                     <td>
-                        <a class="a-inside edit" href="../users/edit/<%=i+1%>">Edit</a>
-                       
-                        <a class="a-inside delete" href="../users/delete/<%=i+1%>">Delete</a>
-                       
+                        <a  href="../users/edit/<%=i+1%>">Edit</a>
+                        <a  href="../users/"  onclick ="deleteSend(<%=i+1%>)">Del</a>
                     </td>
                 </tr>
             <% }
